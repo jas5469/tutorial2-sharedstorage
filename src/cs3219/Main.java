@@ -6,8 +6,13 @@ public class Main {
 
     public static void main(String[] args) {
 	// write your code here
-        InputFilter input = new InputFilter();
+
+        SharedDataStorage sharedDataStorage = new SharedDataStorage();
+        Input input = new Input(sharedDataStorage);
         input.readInput();
-        new CircularShifterFilter(input.getWordsToIgnore(),input.getTitles());
+        new CircularShifter(sharedDataStorage);
+        new Alphabetizer(sharedDataStorage);
+        new Output(sharedDataStorage);
+
     }
 }

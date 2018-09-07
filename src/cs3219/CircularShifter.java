@@ -1,11 +1,13 @@
 package cs3219;
 import java.util.*;
 
-public class CircularShifterFilter {
+public class CircularShifter {
     private ArrayList<String> output;
 
-    public CircularShifterFilter(ArrayList<String> wordsToIgnore, ArrayList<String> titles){
+    public CircularShifter(SharedDataStorage sharedDataStorage){
         output = new ArrayList<String>();
+        ArrayList<String> wordsToIgnore = sharedDataStorage.getInputWordsToIgnoreList();
+        ArrayList<String> titles = sharedDataStorage.getInputTitleList();
 
         for(String title : titles){
             String[] wordsInTitle = title.split(" ");
@@ -28,11 +30,10 @@ public class CircularShifterFilter {
                 shift(queueTitle);
             }
         }
+
+        sharedDataStorage.writeToListOfStringsAfterCircularShift(output);
     }
 
-    public ArrayList<String> getOutput() {
-        return output;
-    }
 
     //helper methods
     private String queueToString(Queue<String> title){
