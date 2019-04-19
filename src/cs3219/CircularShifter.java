@@ -15,6 +15,7 @@ public class CircularShifter {
             for(String word : wordsInTitle){
                 queueTitle.offer(word);
             }
+			
             for(int i = 0; i< wordsInTitle.length; i++){
                 String wordToCheck = queueTitle.peek();
                 boolean shouldIgnore = false;
